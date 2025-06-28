@@ -12,6 +12,8 @@
 #include "include/csv_utils.h"
 #include <algorithm>
 
+#include "inventory_manager.h"
+
 
 std::string tolower(const std::string& str) {
     std::string result = str;
@@ -31,7 +33,8 @@ std::string printMenuAndGetCommand() {
                  << "4. Display All Items\n"
                  << "5. Save to CSV\n"
                  << "6. Load from CSV\n"
-                 << "7. Exit\n"
+                 << "7. Search Items\n"
+                 << "8. Exit\n"
                  << "Enter your choice (number or full command): ";
 
     std::string input;
@@ -50,14 +53,19 @@ std::string printMenuAndGetCommand() {
         return "save";
     if (normalizedInput == "6" || normalizedInput.find("load") != std::string::npos)
         return "load";
-    if (normalizedInput == "7" || normalizedInput.find("exit") != std::string::npos)
+    if (normalizedInput == "7" || normalizedInput.find("search") != std::string::npos)
+        return "search";
+    if (normalizedInput == "8" || normalizedInput.find("exit") != std::string::npos)
         return "exit";
 
-    return "invalid";
+return "invalid";
 }
 
 
 int main() {
+    InventoryManager manager;
+
+
     std::vector<item> inventory;  // Our dynamic in-memory store
 
     std::cout << "🔧 Inventory Management System Started\n";
@@ -66,94 +74,36 @@ int main() {
         std::string command = printMenuAndGetCommand();
 
         if (command == "add") {
-            std::string name;
-            int id;
-            double price;
-            int quantity;
-
-            std::cout << "Enter item name: ";
-            std::getline(std::cin, name);
-
-            std::cout << "Enter item ID: ";
-            std::cin >> id;
-
-            std::cout << "Enter item price: ";
-            std::cin >> price;
-
-            std::cout << "Enter quantity: ";
-            std::cin >> quantity;
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-
-            inventory.emplace_back(name, id, price, quantity);
-            std::cout << "✅ Item added successfully!\n";
+            manager.addItem();
         }
 
         else if (command == "remove") {
-            int id;
-            std::cout << "Enter item ID to remove: ";
-            std::cin >> id;
-            std::cin.ignore();
-
-            auto it = std::remove_if(inventory.begin(), inventory.end(),
-                [id](const item& item) {
-                    return item.getId() == id;
-                });
-
-            if (it != inventory.end()) {
-                inventory.erase(it, inventory.end());
-                std::cout << "🗑️ Item removed.\n";
-            } else {
-                std::cout << "❌ Item not found.\n";
-            }
+            manager.removeItem();
         }
 
         else if (command == "update") {
-            int id;
-            int newQuantity;
-            std::cout << "Enter item ID to update: ";
-            std::cin >> id;
-
-            std::cout << "Enter new quantity: ";
-            std::cin >> newQuantity;
-            std::cin.ignore();
-
-            bool found = false;
-            for (auto& item : inventory) {
-                if (item.getId() == id) {
-                    item.setQuantity(newQuantity);
-                    std::cout << "✅ Quantity updated.\n";
-                    found = true;
-                    break;
-                }
-            }
-            if (!found)
-                std::cout << "❌ Item not found.\n";
+            manager.updateQuantity();
         }
 
         else if (command == "display") {
-            if (inventory.empty()) {
-                std::cout << "📭 No items to display.\n";
-            } else {
-                std::cout << "📋 Inventory:\n";
-                for (const auto& item : inventory) {
-                    item.displayInfo();
-                }
-            }
+            manager.displayAllItems();
         }
+
 
         else if (command == "save") {
-            std::string filename = "inventory.csv";
-            csv_utils::saveToCSV(inventory, filename);
-            std::cout << "✅ Inventory saved to file.\n";
+            manager.saveToCSV("inventory.csv");
         }
 
+
         else if (command == "load") {
-            std::string filename = "inventory.csv";
-            csv_utils::loadFromCSV(inventory, filename);
-            std::cout << "📥 Inventory loaded from file:\n";
-            for (const auto& item : inventory) {
-                item.displayInfo();
-            }
+            manager.loadFromCSV("inventory.csv");
+        }
+
+        else if (command == "search"){
+            std::string search;
+            std::cout << "Search Items: " << std::endl;
+            std::getline(std::cin, search);
+            manager.searchByType(search);
         }
 
         else if (command == "exit") {

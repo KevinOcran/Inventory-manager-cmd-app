@@ -42,7 +42,7 @@ rule CUSTOM_COMMAND
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = /Users/macbookpro/Applications/CLion.app/Contents/bin/cmake/mac/x64/bin/cmake --regenerate-during-build -S/Users/macbookpro/Projects/InventorySystem -B/Users/macbookpro/Projects/InventorySystem/cmake-build-debug
+  command = /Users/kevin/Applications/CLion.app/Contents/bin/cmake/mac/x64/bin/cmake --regenerate-during-build -S/Users/kevin/Desktop/Desktop./cli-inventory-manager-cpp/InventorySystem -B/Users/kevin/Desktop/Desktop./cli-inventory-manager-cpp/InventorySystem/cmake-build-debug
   description = Re-running CMake...
   generator = 1
 
@@ -51,7 +51,7 @@ rule RERUN_CMAKE
 # Rule for cleaning all built files.
 
 rule CLEAN
-  command = /Users/macbookpro/Applications/CLion.app/Contents/bin/ninja/mac/x64/ninja $FILE_ARG -t clean $TARGETS
+  command = /Users/kevin/Applications/CLion.app/Contents/bin/ninja/mac/x64/ninja $FILE_ARG -t clean $TARGETS
   description = Cleaning all built files...
 
 
@@ -59,6 +59,6 @@ rule CLEAN
 # Rule for printing all primary targets available.
 
 rule HELP
-  command = /Users/macbookpro/Applications/CLion.app/Contents/bin/ninja/mac/x64/ninja -t targets
+  command = /Users/kevin/Applications/CLion.app/Contents/bin/ninja/mac/x64/ninja -t targets
   description = All primary targets available:
 

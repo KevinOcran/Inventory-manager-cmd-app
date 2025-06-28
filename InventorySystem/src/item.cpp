@@ -7,7 +7,9 @@
 #include <iostream>
 #include <utility>
 
-item::item(std::string name, int id, double price, int quantity) : name(std::move(name)), id(id), price(price), quantity(quantity) {}
+item::item(std::string name, std::string id, double price, int quantity, std::string  type)
+    : name(std::move(name)), id(std::move(id)), price(price), quantity(quantity), type(std::move(type)) {}
+
 
 void item::displayInfo() const {
     std::cout<<"Item: "<<name<<" | id: "<<id<<" | price: $"<<price
@@ -18,7 +20,7 @@ std::string item::getName() const {
     return name;
 }
 
-int item::getId() const {
+std::string item::getId() const {
     return id;
 }
 
@@ -30,10 +32,15 @@ int item::getQuantity() const {
     return quantity;
 }
 
+std::string item::getType() const {
+    return type;
+}
+
+
 void item::setName(const std::string &name) {
     this->name = name;
 }
-void item::setId(const int id) {
+void item::setId(const std::string& id) {
     this->id = id;
 }
 
@@ -43,6 +50,10 @@ void item::setPrice(const double price) {
 
 void item::setQuantity(const int quantity) {
     this->quantity = quantity;
+}
+
+void item::setType(const std::string& type) {
+    this->type = type;
 }
 
 

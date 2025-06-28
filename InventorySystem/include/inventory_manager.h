@@ -13,6 +13,7 @@
 
 class InventoryManager {
 private:
+    int nextId = 1;
     std::vector<item> items;
 
 public:
@@ -22,8 +23,9 @@ public:
     void displayAllItems() const;
     void saveToCSV(const std::string& filename) const;
     void loadFromCSV(const std::string& filename);
+    void searchByType(const std::string& search) const;
 
-    const std::vector<item>& getItems() const;
+    [[nodiscard]] const std::vector<item>& getItems() const;
 };
 
 #endif // INVENTORY_MANAGER_H

@@ -1,0 +1,1 @@
+/usr/bin/c++ -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/InventorySystem.dir/src/csv_utils.cpp.o CMakeFiles/InventorySystem.dir/src/inventory_manager.cpp.o CMakeFiles/InventorySystem.dir/src/item.cpp.o CMakeFiles/InventorySystem.dir/main.cpp.o -o InventorySystem

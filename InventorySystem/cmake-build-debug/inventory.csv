@@ -1,4 +1,7 @@
-name,id,price,quantity
-Galaxy S10 , 2 , 150 , 8
-Nothing pro 1 , 3 , 90 , 20
-One plus one pro , 4 , 120 , 10
+name,id,price,quantity,type
+Samsung,INV-2025-0001,300,20,Smart Phone
+1plus,INV-2025-0002,300,20,Smart Phone
+iPhone,INV-2025-0003,400,10,Smart Phone
+Nasco,INV-2025-0004,500,20,Fan
+Hisense,INV-2025-0005,350,20,Fan
+Samsung HD,INV-2025-0006,300,30,TV

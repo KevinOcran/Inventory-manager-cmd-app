@@ -1,3 +1,3 @@
-/Users/macbookpro/Projects/InventorySystem/cmake-build-debug/CMakeFiles/InventorySystem.dir
-/Users/macbookpro/Projects/InventorySystem/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/macbookpro/Projects/InventorySystem/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/kevin/Desktop/Desktop./cli-inventory-manager-cpp/InventorySystem/cmake-build-debug/CMakeFiles/InventorySystem.dir
+/Users/kevin/Desktop/Desktop./cli-inventory-manager-cpp/InventorySystem/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/kevin/Desktop/Desktop./cli-inventory-manager-cpp/InventorySystem/cmake-build-debug/CMakeFiles/rebuild_cache.dir
